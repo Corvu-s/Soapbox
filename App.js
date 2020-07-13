@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Store from "./components/state/store";
+import AppNavigator from "./components/navigation";
+
 //dev branch
 //git https://forum.freecodecamp.org/t/push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too/13222
 //https://medium.com/react-native-institute/how-to-use-git-with-react-native-687c12431e36
@@ -16,19 +18,7 @@ import Store from "./components/state/store";
 export default function App() {
   return (
     <Store>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <AppNavigator />
     </Store>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

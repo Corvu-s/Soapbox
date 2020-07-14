@@ -1,11 +1,35 @@
 import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-
+import { StyleSheet, View, Text } from "react-native";
+import { Button, TextInput } from "react-native-paper";
+import Head from "./Head";
 function Login({ navigation }) {
+  //most likley replaced by twitter login page on google Login
   return (
-    <View style={styles.container}>
-      <Text>Login</Text>
-    </View>
+    <>
+      <Head titleText="Login" />
+      <View style={styles.container}>
+        <TextInput
+          mode="outlined"
+          style={styles.userName}
+          placeholder="enter username/email"
+        />
+        <TextInput
+          mode="outlined"
+          style={styles.password}
+          placeholder="enter password"
+        />
+        <Button
+          color="black"
+          style={styles.login}
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          {" "}
+          LOGIN
+        </Button>
+      </View>
+    </>
   );
 }
 
@@ -15,7 +39,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
+  userName: {
+    height: 50,
+  },
+  password: {
+    height: 50,
+  },
+  login: {
+    color: "#000000",
   },
 });

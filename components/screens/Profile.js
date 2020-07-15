@@ -1,13 +1,20 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import {
+  Avatar,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+  shadow,
+} from "react-native-paper";
 function PROFILE({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>PROFILE</Text>
 
-      <Card>
+      {/* <Card>
         <Card.Title title="Card Title" subtitle="Card Subtitle" />
         <Card.Content>
           <Title>Card title</Title>
@@ -18,7 +25,12 @@ function PROFILE({ navigation }) {
           <Button>Cancel</Button>
           <Button>Ok</Button>
         </Card.Actions>
-      </Card>
+      </Card> */}
+      <View style={styles.BannerLowerShadow}></View>
+      <View style={styles.BannerUpperShadow}>
+        <Text>*Breath in</Text>
+        <Avatar.Image size={100} source={require("../images/test.png")} />
+      </View>
     </View>
   );
 }
@@ -28,11 +40,53 @@ export default PROFILE;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#2B2B2B",
   },
   avatar: {
     position: "absolute",
     top: 100,
     left: 50,
+  },
+  BannerUpperShadow: {
+    borderRadius: 20,
+    shadowColor: "#fff",
+    shadowOffset: {
+      width: -5,
+      height: -5,
+    },
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 10,
+
+    ////////////////////postion,not to do with shadow
+    position: "absolute",
+    top: 100,
+    left: 15,
+    height: 200,
+    width: 350,
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#2B2B2B",
+  },
+  BannerLowerShadow: {
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 10,
+      height: 7,
+    },
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+
+    elevation: 10,
+
+    position: "absolute",
+    top: 100,
+    left: 15,
+    height: 200,
+    width: 350,
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#2B2B2B",
   },
 });

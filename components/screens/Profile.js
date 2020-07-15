@@ -4,6 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 import {
   Avatar,
   Button,
+  IconButton,
   Card,
   Title,
   Paragraph,
@@ -12,18 +13,29 @@ import {
 function PROFILE({ navigation }) {
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.BannerLowerShadow}></View>
-        <View style={styles.BannerUpperShadow}>
-          <Text style={styles.name}>Spongebob</Text>
-          <Text style={styles.handle}>@spongboi</Text>
-          <Text style={styles.tweetNum}>42069 tweets</Text>
+      <View style={styles.main}>
+        <IconButton
+          size={40}
+          style={styles.drawerButton}
+          icon="menu"
+          onPress={() => {
+            navigation.openDrawer();
+          }}
+        />
 
-          <Avatar.Image
-            size={100}
-            source={require("../images/test.png")}
-            style={styles.avatar}
-          />
+        <View style={styles.container}>
+          <View style={styles.BannerLowerShadow}></View>
+          <View style={styles.BannerUpperShadow}>
+            <Text style={styles.name}>Spongebob</Text>
+            <Text style={styles.handle}>@spongboi</Text>
+            <Text style={styles.tweetNum}>42069 tweets</Text>
+
+            <Avatar.Image
+              size={100}
+              source={require("../images/test.png")}
+              style={styles.avatar}
+            />
+          </View>
         </View>
       </View>
     </>
@@ -33,6 +45,12 @@ function PROFILE({ navigation }) {
 export default PROFILE;
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
   container: {
     position: "absolute",
     top: 551,
@@ -41,6 +59,12 @@ const styles = StyleSheet.create({
     width: 375,
     borderRadius: 20,
     backgroundColor: "#2B2B2B",
+  },
+  drawerButton: {
+    position: "absolute",
+    top: 20,
+    left: 10,
+    color: "black",
   },
   avatar: {
     position: "absolute",

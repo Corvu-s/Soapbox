@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
   },
   BannerUpperShadow: {
     borderRadius: 20,
-    shadowColor: "#fff",
+    shadowColor: "#3A3A3A",
     shadowOffset: {
       width: -5,
-      height: -5,
+      height: -7,
     },
-    shadowOpacity: 0.12,
-    shadowRadius: 5,
+    shadowOpacity: 1,
+    shadowRadius: 13,
     elevation: 10,
 
     ////////////////////postion,not to do with shadow
@@ -70,16 +70,15 @@ const styles = StyleSheet.create({
   },
   BannerLowerShadow: {
     borderRadius: 20,
-    shadowColor: "#000",
+    shadowColor: "#222222",
     shadowOffset: {
       width: 10,
       height: 7,
     },
-    shadowOpacity: 0.12,
+    shadowOpacity: 1,
     shadowRadius: 5,
-
-    elevation: 10,
-
+    elevation: 13,
+    ///////////////////
     position: "absolute",
     top: 100,
     left: 15,

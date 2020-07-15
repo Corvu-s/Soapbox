@@ -3,6 +3,10 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Store from "./components/state/store";
 import AppNavigator from "./components/navigation";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import Login from "./components/screens/Login";
+import Profile from "./components/screens/Profile";
 
 //dev branch
 //git https://forum.freecodecamp.org/t/push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too/13222
@@ -16,9 +20,17 @@ import AppNavigator from "./components/navigation";
 //import react-native-el;ements or something
 
 export default function App() {
+  const Drawer = createDrawerNavigator();
+
   return (
     <Store>
       <AppNavigator />
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Login">
+          <Drawer.Screen name="login" component={Login} />
+          <Drawer.Screen name="profile" component={Profile} />
+        </Drawer.Navigator>
+      </NavigationContainer>
     </Store>
   );
 }

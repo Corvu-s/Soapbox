@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNav() {
   return (
-    <Drawer.Navigator initialRouteName="Login">
+    <Drawer.Navigator>
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="Login" component={Login} />
     </Drawer.Navigator>
@@ -19,7 +19,7 @@ function DrawerNav() {
 
 const StackNav = () => {
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator headerMode="none" initialRouteName="Login">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Profile" component={DrawerNav} />
     </Stack.Navigator>

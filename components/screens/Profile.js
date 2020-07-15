@@ -1,16 +1,18 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text, Keyboard } from "react-native";
 
-import {
-  Avatar,
-  Button,
-  IconButton,
-  Card,
-  Title,
-  Paragraph,
-  shadow,
-} from "react-native-paper";
+import { Avatar, Button, IconButton, TextInput } from "react-native-paper";
+
 function PROFILE({ navigation }) {
+  const [tweet, setTweet] = useState("");
+
+  function handleTweetEvent() {
+    console.log("TWEETED" + tweet);
+    setTweet(" "); //used to clear the text area, do api shit before this
+  }
+  function handleCancelTweet() {
+    Keyboard.dismiss();
+  }
   return (
     <>
       <View style={styles.main}>
@@ -22,6 +24,32 @@ function PROFILE({ navigation }) {
             navigation.openDrawer();
           }}
         />
+
+        <View style={styles.tweetBoxLower}>
+          <TextInput
+            multiline={true}
+            value={tweet}
+            style={styles.textArea}
+            placeholder="Write a Tweet"
+            onChangeText={(e) => setTweet(e)}
+            keyboardType="twitter"
+          />
+          <Button
+            icon="twitter"
+            style={styles.tweetButton}
+            mode="contained"
+            onPress={handleTweetEvent}
+          >
+            Tweet
+          </Button>
+          <IconButton
+            color="white"
+            icon="cancel"
+            style={styles.cancelButton}
+            mode="contained"
+            onPress={handleCancelTweet}
+          ></IconButton>
+        </View>
 
         <View style={styles.container}>
           <View style={styles.BannerLowerShadow}></View>
@@ -101,7 +129,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 13,
     elevation: 10,
-
     ////////////////////postion,not to do with shadow
     position: "absolute",
     top: 50,
@@ -131,5 +158,54 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#2B2B2B",
+  },
+
+  tweetBoxLower: {
+    position: "absolute",
+    //controls tweet box upper position and shadowing
+    position: "absolute",
+    width: 310,
+    height: 370,
+    left: 35,
+    top: 100,
+    borderRadius: 20,
+    backgroundColor: "#F3F3F3",
+    /////////////////////shadow"#cfcfcf"
+    shadowColor: "#cfcfcf",
+    shadowOffset: {
+      width: 5,
+      height: 5,
+    },
+    shadowOpacity: 0.8,
+  },
+  tweetButton: {
+    color: "white",
+    top: 330,
+    left: 180,
+    position: "absolute",
+    backgroundColor: "#2B2B2B",
+    borderRadius: 10,
+    /////shadow
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 2 },
+    shadowOpacity: 0.2,
+  },
+  textArea: {
+    position: "absolute",
+    top: 15,
+    left: 0,
+    backgroundColor: "#F3F3F3",
+    height: 300,
+    width: 310,
+  },
+  cancelButton: {
+    position: "absolute",
+    top: 323,
+    left: 130,
+    backgroundColor: "#2B2B2B",
+    borderRadius: 10,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 2 },
+    shadowOpacity: 1,
   },
 });

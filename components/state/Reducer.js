@@ -3,47 +3,47 @@ const Reducer = (state, action) => {
     case "SET_USERNAME":
       state.username = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     case "SET_EMAIL":
       state.email = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     case "SET_GIVEN_NAME":
       state.givenName = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     case "SET_PIC":
       state.pic = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     case "SET_TWEET_COUNT":
       state.tweetCount = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     case "IS_VERIFIED":
       state.isVerified = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     case "USER_EXISTS":
       state.userExists = action.data;
       return {
-        state,
+        ...state,
       };
     ////////////////
     default:
-      return state;
+      return { ...state };
   }
 };
 

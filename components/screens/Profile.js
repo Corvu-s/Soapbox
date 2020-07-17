@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StyleSheet, View, Text, Keyboard } from "react-native";
 
 import { Avatar, Button, IconButton, TextInput } from "react-native-paper";
-
+import { Context } from "../state/store";
 function PROFILE({ navigation }) {
   const [tweet, setTweet] = useState("");
-
+  const [state, dispatch] = useContext(Context); //global state
   function handleTweetEvent() {
     console.log("TWEETED" + tweet);
+    dispatch({ type: "SET_TWEET_COUNT", data: 20 });
+    console.log(state);
     setTweet(" "); //used to clear the text area, do api shit before this
   }
   function handleCancelTweet() {
@@ -56,7 +58,11 @@ function PROFILE({ navigation }) {
           <View style={styles.BannerUpperShadow}>
             <Text style={styles.name}>Spongebob</Text>
             <Text style={styles.handle}>@spongboi</Text>
-            <Text style={styles.tweetNum}>42069 tweets</Text>
+            {state.tweetCount == 1 ? (
+              <Text style={styles.tweetNum}>{state.tweetCount} tweet</Text>
+            ) : (
+              <Text style={styles.tweetNum}>{state.tweetCount} tweets</Text>
+            )}
 
             <Avatar.Image
               size={100}

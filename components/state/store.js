@@ -2,11 +2,12 @@ import React, { createContext, useReducer } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
+  settings: { showTweetNum: true, showAds: false },
   username: "",
   email: "",
   givenName: "",
   pic: "",
-  tweetCount: 0,
+  tweetCount: 1,
   userExists: false,
   isVerified: false,
 };

@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
+import Test from "../screens/Test";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -22,6 +23,7 @@ const StackNav = () => {
     <Stack.Navigator headerMode="none" initialRouteName="Login">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Profile" component={DrawerNav} />
+      <Stack.Screen name="Test" component={Test} />
     </Stack.Navigator>
   );
 };

@@ -11,6 +11,7 @@ function PROFILE({ navigation }) {
     dispatch({ type: "SET_TWEET_COUNT", data: 20 });
     console.log(state);
     setTweet(" "); //used to clear the text area, do api shit before this
+    Keyboard.dismiss(); //get rid of keyboard
   }
   function handleCancelTweet() {
     Keyboard.dismiss();

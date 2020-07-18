@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Keyboard } from "react-native";
 
 import { Avatar, Button, IconButton, TextInput } from "react-native-paper";
 import { Context } from "../state/store";
-function PROFILE({ navigation }) {
+function Test({ navigation }) {
   //this is a test to try out how to place components withoug having to use absolute positions
   const [tweet, setTweet] = useState("");
   const [state, dispatch] = useContext(Context); //global state
@@ -30,17 +30,16 @@ function PROFILE({ navigation }) {
         />
 
         <View style={styles.tweetBox}>
-          <View style={styles.test}>
-            <TextInput
-              mode="outlined"
-              multiline={true}
-              value={tweet}
-              style={styles.textArea}
-              placeholder="Write a Tweet"
-              onChangeText={(e) => setTweet(e)}
-              keyboardType="twitter"
-            />
-          </View>
+          <TextInput
+            mode="outlined"
+            multiline={true}
+            value={tweet}
+            style={styles.textArea}
+            placeholder="Write a Tweet"
+            onChangeText={(e) => setTweet(e)}
+            keyboardType="twitter"
+          />
+
           <View style={styles.buttonGroup}>
             <Button
               icon="twitter"
@@ -83,7 +82,7 @@ function PROFILE({ navigation }) {
   );
 }
 
-export default PROFILE;
+export default Test;
 
 const styles = StyleSheet.create({
   main: {
@@ -172,13 +171,14 @@ const styles = StyleSheet.create({
 
   tweetBox: {
     //controls tweet box upper position and shadowing
-    top: "8%", // pushes the tweet box down because of the notch.consider removing because its fixed, maybe have this as a variable depending on the phone version idk
+    top: "12%", // pushes the tweet box down because of the notch.consider removing because its fixed, maybe have this as a variable depending on the phone version idk
     justifyContent: "center",
     width: "85%",
     height: "50%",
     justifyContent: "space-between",
     borderRadius: 20,
     backgroundColor: "#F3F3F3",
+
     /////////////////////shadow"#cfcfcf"
     shadowColor: "#cfcfcf",
     shadowOffset: {
@@ -188,6 +188,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
   },
   tweetButton: {
+    top: "-10%",
     color: "white",
 
     backgroundColor: "#2B2B2B",
@@ -198,21 +199,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   textArea: {
+    top: "5%",
+    flex: 1,
     backgroundColor: "#F3F3F3",
     width: "100%",
-    height: "50%",
+    height: "80%",
   },
   cancelButton: {
+    top: "-10%",
     backgroundColor: "#2B2B2B",
     borderRadius: 10,
     shadowColor: "black",
     shadowOffset: { height: 1, width: 2 },
     shadowOpacity: 1,
   },
-  test: {
-    backgroundColor: "red",
-  },
+
   buttonGroup: {
+    height: "10%",
     flexDirection: "row-reverse",
   },
 });

@@ -12,6 +12,7 @@ function PROFILE({ navigation }) {
     dispatch({ type: "SET_TWEET_COUNT", data: 20 });
     console.log(state);
     setTweet(" "); //used to clear the text area, do api shit before this
+    Keyboard.dismiss();
   }
   function handleCancelTweet() {
     Keyboard.dismiss();
@@ -19,42 +20,47 @@ function PROFILE({ navigation }) {
   return (
     <>
       <View style={styles.main}>
-        {/* <IconButton
+        <IconButton
           size={40}
           style={styles.drawerButton}
           icon="menu"
           onPress={() => {
             navigation.openDrawer();
           }}
-        /> */}
+        />
 
         <View style={styles.tweetBox}>
-          {/* <TextInput
-            multiline={true}
-            value={tweet}
-            style={styles.textArea}
-            placeholder="Write a Tweet"
-            onChangeText={(e) => setTweet(e)}
-            keyboardType="twitter"
-          />
-          <Button
-            icon="twitter"
-            style={styles.tweetButton}
-            mode="contained"
-            onPress={handleTweetEvent}
-          >
-            Tweet
-          </Button>
-          <IconButton
-            color="white"
-            icon="cancel"
-            style={styles.cancelButton}
-            mode="contained"
-            onPress={handleCancelTweet}
-          ></IconButton> */}
+          <View style={styles.test}>
+            <TextInput
+              mode="outlined"
+              multiline={true}
+              value={tweet}
+              style={styles.textArea}
+              placeholder="Write a Tweet"
+              onChangeText={(e) => setTweet(e)}
+              keyboardType="twitter"
+            />
+          </View>
+          <View style={styles.buttonGroup}>
+            <Button
+              icon="twitter"
+              style={styles.tweetButton}
+              mode="contained"
+              onPress={handleTweetEvent}
+            >
+              Tweet
+            </Button>
+            <IconButton
+              color="white"
+              icon="cancel"
+              style={styles.cancelButton}
+              mode="contained"
+              onPress={handleCancelTweet}
+            ></IconButton>
+          </View>
         </View>
 
-        <View style={styles.container}>
+        <View style={styles.profileBox}>
           {/* <View style={styles.BannerLowerShadow}></View>
           <View style={styles.BannerUpperShadow}>
             <Text style={styles.name}>Spongebob</Text>
@@ -86,15 +92,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  container: {
-    height: 270,
-    width: 375,
+  profileBox: {
+    height: "30%",
+    width: "100%",
     borderRadius: 20,
     backgroundColor: "#2B2B2B",
   },
   drawerButton: {
     position: "absolute",
-    top: 20,
+    top: 10,
     left: 10,
     color: "black",
   },
@@ -166,11 +172,11 @@ const styles = StyleSheet.create({
 
   tweetBox: {
     //controls tweet box upper position and shadowing
-    top: 50, // pushes the tweet box down because of the notch.consider removing because its fixed, maybe have this as a variable depending on the phone version idk
+    top: "8%", // pushes the tweet box down because of the notch.consider removing because its fixed, maybe have this as a variable depending on the phone version idk
     justifyContent: "center",
-    width: 310,
-    height: 370,
-
+    width: "85%",
+    height: "50%",
+    justifyContent: "space-between",
     borderRadius: 20,
     backgroundColor: "#F3F3F3",
     /////////////////////shadow"#cfcfcf"
@@ -183,9 +189,7 @@ const styles = StyleSheet.create({
   },
   tweetButton: {
     color: "white",
-    top: 330,
-    left: 180,
-    position: "absolute",
+
     backgroundColor: "#2B2B2B",
     borderRadius: 10,
     /////shadow
@@ -194,21 +198,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   textArea: {
-    position: "absolute",
-    top: 15,
-    left: 0,
     backgroundColor: "#F3F3F3",
-    height: 300,
-    width: 310,
+    width: "100%",
+    height: "50%",
   },
   cancelButton: {
-    position: "absolute",
-    top: 323,
-    left: 130,
     backgroundColor: "#2B2B2B",
     borderRadius: 10,
     shadowColor: "black",
     shadowOffset: { height: 1, width: 2 },
     shadowOpacity: 1,
+  },
+  test: {
+    backgroundColor: "red",
+  },
+  buttonGroup: {
+    flexDirection: "row-reverse",
   },
 });

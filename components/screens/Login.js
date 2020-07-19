@@ -22,7 +22,7 @@ function Login({ navigation }) {
           color="black"
           style={styles.login}
           onPress={() => {
-            navigation.navigate("Test");
+            navigation.navigate("Profile");
           }}
         >
           {" "}

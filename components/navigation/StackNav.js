@@ -23,7 +23,6 @@ const StackNav = () => {
     <Stack.Navigator headerMode="none" initialRouteName="Login">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Profile" component={DrawerNav} />
-      <Stack.Screen name="Test" component={Test} />
     </Stack.Navigator>
   );
 };

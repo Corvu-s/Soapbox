@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, Keyboard } from "react-native";
 
 import { Avatar, Button, IconButton, TextInput } from "react-native-paper";
 import { Context } from "../state/store";
-function PROFILE({ navigation }) {
+function Profile({ navigation }) {
+  //this is a test to try out how to place components withoug having to use absolute positions
   const [tweet, setTweet] = useState("");
   const [state, dispatch] = useContext(Context); //global state
   function handleTweetEvent() {
@@ -11,9 +12,13 @@ function PROFILE({ navigation }) {
     dispatch({ type: "SET_TWEET_COUNT", data: 20 });
     console.log(state);
     setTweet(" "); //used to clear the text area, do api shit before this
-    Keyboard.dismiss(); //get rid of keyboard
+    Keyboard.dismiss();
   }
   function handleCancelTweet() {
+    Keyboard.dismiss();
+  }
+  function handleSubmit() {
+    console.log("dismiss the keyboard");
     Keyboard.dismiss();
   }
   return (
@@ -28,33 +33,39 @@ function PROFILE({ navigation }) {
           }}
         />
 
-        <View style={styles.tweetBoxLower}>
+        <View style={styles.tweetBox}>
           <TextInput
+            autoFocus={true}
+            mode="outlined"
             multiline={true}
             value={tweet}
             style={styles.textArea}
             placeholder="Write a Tweet"
+            returnKeyType={"done"}
+            onSubmitEditing={handleSubmit}
             onChangeText={(e) => setTweet(e)}
-            keyboardType="twitter"
           />
-          <Button
-            icon="twitter"
-            style={styles.tweetButton}
-            mode="contained"
-            onPress={handleTweetEvent}
-          >
-            Tweet
-          </Button>
-          <IconButton
-            color="white"
-            icon="cancel"
-            style={styles.cancelButton}
-            mode="contained"
-            onPress={handleCancelTweet}
-          ></IconButton>
+
+          <View style={styles.buttonGroup}>
+            <Button
+              icon="twitter"
+              style={styles.tweetButton}
+              mode="contained"
+              onPress={handleTweetEvent}
+            >
+              Tweet
+            </Button>
+            <IconButton
+              color="white"
+              icon="cancel"
+              style={styles.cancelButton}
+              mode="contained"
+              onPress={handleCancelTweet}
+            ></IconButton>
+          </View>
         </View>
 
-        <View style={styles.container}>
+        <View style={styles.profileBox}>
           <View style={styles.BannerLowerShadow}></View>
           <View style={styles.BannerUpperShadow}>
             <Text style={styles.name}>Spongebob</Text>
@@ -77,24 +88,27 @@ function PROFILE({ navigation }) {
   );
 }
 
-export default PROFILE;
+export default Profile;
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingHorizontal: 10,
-    paddingVertical: 20,
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  container: {
-    height: "50%",
-    width: "90%",
-    borderRadius: 20,
+  profileBox: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    height: "30%",
+    width: "100%",
     backgroundColor: "#2B2B2B",
+
+    alignItems: "center",
   },
   drawerButton: {
     position: "absolute",
-    top: 20,
+    top: 10,
     left: 10,
     color: "black",
   },
@@ -120,7 +134,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 20,
     color: "grey",
-    top: 55,
+    top: 50,
     left: 10,
   },
   BannerUpperShadow: {
@@ -135,8 +149,9 @@ const styles = StyleSheet.create({
     elevation: 10,
     ////////////////////postion,not to do with shadow
 
-    flex: 1,
-    justifyContent: "center",
+    height: "50%",
+    width: 294,
+
     backgroundColor: "#2B2B2B",
   },
   BannerLowerShadow: {
@@ -151,21 +166,22 @@ const styles = StyleSheet.create({
     elevation: 13,
     ///////////////////
 
-    flex: 1,
-    justifyContent: "center",
+    height: "50%",
+    width: 294,
+    zIndex: 0,
     backgroundColor: "#2B2B2B",
   },
 
-  tweetBoxLower: {
-    position: "absolute",
+  tweetBox: {
     //controls tweet box upper position and shadowing
-    position: "absolute",
-    width: 310,
-    height: 370,
-    left: 35,
-    top: 100,
+    top: "12%", // pushes the tweet box down because of the notch.consider removing because its fixed, maybe have this as a variable depending on the phone version idk
+    justifyContent: "center",
+    width: "85%",
+    height: "50%",
+    justifyContent: "space-between",
     borderRadius: 20,
     backgroundColor: "#F3F3F3",
+
     /////////////////////shadow"#cfcfcf"
     shadowColor: "#cfcfcf",
     shadowOffset: {
@@ -175,10 +191,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
   },
   tweetButton: {
+    top: "-10%",
     color: "white",
-    top: 330,
-    left: 180,
-    position: "absolute",
+
     backgroundColor: "#2B2B2B",
     borderRadius: 10,
     /////shadow
@@ -187,21 +202,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   textArea: {
-    position: "absolute",
-    top: 15,
-    left: 0,
+    top: "5%",
+    flex: 1,
     backgroundColor: "#F3F3F3",
-    height: 300,
-    width: 310,
+    width: "100%",
+    height: "80%",
   },
   cancelButton: {
-    position: "absolute",
-    top: 323,
-    left: 130,
+    top: "-10%",
     backgroundColor: "#2B2B2B",
     borderRadius: 10,
     shadowColor: "black",
     shadowOffset: { height: 1, width: 2 },
     shadowOpacity: 1,
+  },
+
+  buttonGroup: {
+    height: "10%",
+    flexDirection: "row-reverse",
   },
 });

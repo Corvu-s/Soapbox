@@ -7,7 +7,7 @@ const initialState = {
   email: "",
   givenName: "",
   pic: "",
-  tweetCount: 1,
+  tweetCount: 0,
   userExists: false,
   isVerified: false,
 };

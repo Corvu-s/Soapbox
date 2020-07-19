@@ -17,6 +17,10 @@ function Test({ navigation }) {
   function handleCancelTweet() {
     Keyboard.dismiss();
   }
+  function handleSubmit() {
+    console.log("dismiss the keyboard");
+    Keyboard.dismiss();
+  }
   return (
     <>
       <View style={styles.main}>
@@ -31,13 +35,15 @@ function Test({ navigation }) {
 
         <View style={styles.tweetBox}>
           <TextInput
+            autoFocus={true}
             mode="outlined"
             multiline={true}
             value={tweet}
             style={styles.textArea}
             placeholder="Write a Tweet"
+            returnKeyType={"done"}
+            onSubmitEditing={handleSubmit}
             onChangeText={(e) => setTweet(e)}
-            keyboardType="twitter"
           />
 
           <View style={styles.buttonGroup}>
@@ -60,7 +66,7 @@ function Test({ navigation }) {
         </View>
 
         <View style={styles.profileBox}>
-          {/* <View style={styles.BannerLowerShadow}></View>
+          <View style={styles.BannerLowerShadow}></View>
           <View style={styles.BannerUpperShadow}>
             <Text style={styles.name}>Spongebob</Text>
             <Text style={styles.handle}>@spongboi</Text>
@@ -75,7 +81,7 @@ function Test({ navigation }) {
               source={require("../images/test.png")}
               style={styles.avatar}
             />
-          </View> */}
+          </View>
         </View>
       </View>
     </>
@@ -92,10 +98,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   profileBox: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     height: "30%",
     width: "100%",
-    borderRadius: 20,
     backgroundColor: "#2B2B2B",
+
+    alignItems: "center",
   },
   drawerButton: {
     position: "absolute",
@@ -139,13 +148,10 @@ const styles = StyleSheet.create({
     shadowRadius: 13,
     elevation: 10,
     ////////////////////postion,not to do with shadow
-    position: "absolute",
-    top: 50,
-    left: 40,
-    height: 160,
+
+    height: "50%",
     width: 294,
-    flex: 1,
-    justifyContent: "center",
+
     backgroundColor: "#2B2B2B",
   },
   BannerLowerShadow: {
@@ -159,13 +165,10 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 13,
     ///////////////////
-    position: "absolute",
-    top: 50,
-    left: 40,
-    height: 160,
+
+    height: "50%",
     width: 294,
-    flex: 1,
-    justifyContent: "center",
+    zIndex: 0,
     backgroundColor: "#2B2B2B",
   },
 

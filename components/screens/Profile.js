@@ -87,11 +87,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   container: {
-    position: "absolute",
-    top: 551,
-    left: 0,
-    height: 270,
-    width: 375,
+    height: "50%",
+    width: "90%",
     borderRadius: 20,
     backgroundColor: "#2B2B2B",
   },
@@ -123,7 +120,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 20,
     color: "grey",
-    top: 50,
+    top: 55,
     left: 10,
   },
   BannerUpperShadow: {
@@ -137,11 +134,7 @@ const styles = StyleSheet.create({
     shadowRadius: 13,
     elevation: 10,
     ////////////////////postion,not to do with shadow
-    position: "absolute",
-    top: 50,
-    left: 40,
-    height: 160,
-    width: 294,
+
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#2B2B2B",
@@ -157,11 +150,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 13,
     ///////////////////
-    position: "absolute",
-    top: 50,
-    left: 40,
-    height: 160,
-    width: 294,
+
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#2B2B2B",

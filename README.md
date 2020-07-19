@@ -1,5 +1,5 @@
 # Soapbox
 A distraction free way to distribute content on twitter.
 
-![render pic]("https://github.com/Corvu-s/Soapbox/blob/master/docs/img/FloatingBlackIphone.png")
-![render pic]("https://github.com/Corvu-s/Soapbox/blob/master/docs/img/FloatingRender.png")
+![render pic]("https://raw.githubusercontent.com/Corvu-s/Soapbox/master/docs/img/FloatingBlackIphone.png")
+![render pic]("https://raw.githubusercontent.com/Corvu-s/Soapbox/master/docs/img/FloatingRender.png")
